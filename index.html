@@ -4,119 +4,117 @@
     <meta charset="UTF-8">
     <!-- Настройка для правильного отображения на телефонах и компьютерах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Дашборд</title>
+    <title>Рабочий Дашборд</title>
     
     <!-- Подключаем Tailwind CSS для красивого дизайна -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Немного простых стилей для плавной анимации карточек при наведении */
+        /* Плавная анимация карточек при наведении */
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
-            transform: translateY(-5px); /* Приподнимаем карточку на 5 пикселей вверх */
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen p-6">
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen p-4 md:p-10">
 
-    <!-- Главный контейнер, который центрирует содержимое и ограничивает ширину -->
+    <!-- Главный контейнер -->
     <div class="max-w-6xl mx-auto">
         
         <!-- Заголовок дашборда -->
-        <header class="mb-10 text-center">
-            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Рабочий Дашборд</h1>
-            <p class="text-lg text-gray-600">Быстрый доступ к важным таблицам и документам</p>
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">Рабочий Дашборд</h1>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">Центральный пульт управления всеми рабочими таблицами и отчетами</p>
+            <div class="mt-6 h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
         </header>
 
-        <!-- Сетка для кнопок (карточек) -->
-        <!-- grid-cols-1 для телефонов, sm:grid-cols-2 для планшетов, lg:grid-cols-3 для мониторов -->
+        <!-- Сетка для кнопок -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="buttons-container">
             
             <!-- Карточка 1: Отход по участкам -->
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-xl p-6 border border-gray-200 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <!-- Иконка (простая нарисованная иконка таблицы зеленого цвета) -->
-                    <div class="bg-green-100 p-3 rounded-lg text-green-600">
+                    <div class="bg-green-100 p-3 rounded-xl text-green-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <!-- Текст карточки -->
                     <div>
-                        <h2 class="text-xl font-bold text-gray-800">Отход по участкам</h2>
-                        <p class="text-sm text-gray-500 mt-1">Google Таблицы</p>
+                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Отход по участкам</h2>
+                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Таблица</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 2: Табель учета рабочего времени -->
-            <a href="https://docs.google.com/spreadsheets/d/1BBJ2wOiq3fAFM_AoBMGawjmA6-PVJG4BJSf277iyNBo/edit?gid=1908914099#gid=1908914099" target="_blank" class="block bg-white rounded-xl p-6 border border-gray-200 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1BBJ2wOiq3fAFM_AoBMGawjmA6-PVJG4BJSf277iyNBo/edit?gid=1908914099#gid=1908914099" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
-                        <!-- Иконка часов -->
+                    <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-gray-800">Табель учета рабочего времени</h2>
-                        <p class="text-sm text-gray-500 mt-1">Google Таблицы</p>
+                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Табель учета рабочего времени</h2>
+                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Персонал</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 3: Отчёт по людям -->
-            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-xl p-6 border border-gray-200 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-purple-100 p-3 rounded-lg text-purple-600">
-                        <!-- Иконка пользователей -->
+                    <div class="bg-purple-100 p-3 rounded-xl text-purple-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-gray-800">Отчёт по людям</h2>
-                        <p class="text-sm text-gray-500 mt-1">Google Таблицы</p>
+                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Отчёт по людям</h2>
+                        <p class="text-xs font-medium text-purple-600 uppercase tracking-wider mt-1">Кадры</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 4: Ежедневный отчёт по выработке -->
-            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-xl p-6 border border-gray-200 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-indigo-100 p-3 rounded-lg text-indigo-600">
-                        <!-- Иконка графика (тренд вверх) -->
+                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-gray-800">Ежедневный отчёт по выработке</h2>
-                        <p class="text-sm text-gray-500 mt-1">Google Таблицы</p>
+                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Ежедневный отчёт по выработке</h2>
+                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Производство</p>
                     </div>
                 </div>
             </a>
 
-            <!-- Карточка 5: Остатки сырья (склад г.Протвино) -->
-            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-xl p-6 border border-gray-200 card-hover shadow-sm">
+            <!-- Карточка 5: Остатки сырья -->
+            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-orange-100 p-3 rounded-lg text-orange-600">
-                        <!-- Иконка коробок (склад) -->
+                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-gray-800">Остатки сырья (склад г.Протвино)</h2>
-                        <p class="text-sm text-gray-500 mt-1">Google Таблицы</p>
+                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Остатки сырья (Протвино)</h2>
+                        <p class="text-xs font-medium text-orange-600 uppercase tracking-wider mt-1">Склад</p>
                     </div>
                 </div>
             </a>
 
         </div>
+
+        <footer class="mt-20 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 Рабочий Дашборд. Настроен для быстрой работы.</p>
+        </footer>
     </div>
 
 </body>
