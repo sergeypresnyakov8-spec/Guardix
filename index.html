@@ -2,119 +2,149 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Настройка для правильного отображения на телефонах и компьютерах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рабочий Дашборд</title>
+    <title>Панель управления производством</title>
     
-    <!-- Подключаем Tailwind CSS для красивого дизайна -->
+    <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Плавная анимация карточек при наведении */
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: rgba(59, 130, 246, 0.5); /* Добавляем легкое выделение цветом при наведении */
+            border-color: #f97316; /* Оранжевый акцент */
+        }
+        .logo-glow {
+            filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.15));
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen p-4 md:p-10">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen p-4 md:p-10">
 
     <!-- Главный контейнер -->
     <div class="max-w-6xl mx-auto">
         
-        <!-- Заголовок дашборда -->
-        <header class="mb-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-blue-600">Рабочий Дашборд</h1>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">Центральный пульт управления всеми рабочими таблицами и отчетами</p>
-            <div class="mt-6 h-1.5 w-24 bg-blue-500 mx-auto rounded-full"></div>
+        <!-- Верхняя панель с логотипом и названием -->
+        <header class="mb-12 text-center flex flex-col items-center">
+            <!-- Логотип компании (изменен на .png) -->
+            <div class="mb-6 logo-glow">
+                <img src="logo.png" alt="Логотип Guardix" class="w-32 h-32 md:w-44 md:h-44 object-contain transition-transform duration-500 hover:scale-105" onerror="this.src='https://via.placeholder.com/150?text=Logo+Missing'">
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+                Панель управления производством
+            </h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto italic">Эффективность через контроль и данные</p>
+            <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
         </header>
 
-        <!-- Сетка для кнопок -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="buttons-container">
+        <!-- Сетка для основных кнопок -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="buttons-container">
             
             <!-- Карточка 1: Отход по участкам -->
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-green-100 p-3 rounded-xl text-green-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Отход по участкам</h2>
-                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Таблица</p>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход по участкам</h2>
+                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Мониторинг</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 2: Табель учета рабочего времени -->
-            <a href="https://docs.google.com/spreadsheets/d/1BBJ2wOiq3fAFM_AoBMGawjmA6-PVJG4BJSf277iyNBo/edit?gid=1908914099#gid=1908914099" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1BBJ2wOiq3fAFM_AoBMGawjmA6-PVJG4BJSf277iyNBo/edit?gid=1908914099#gid=1908914099" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Табель учета рабочего времени</h2>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Табель учета времени</h2>
                         <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Персонал</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 3: Отчёт по людям -->
-            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-purple-100 p-3 rounded-xl text-purple-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Отчёт по людям</h2>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отчёт по людям</h2>
                         <p class="text-xs font-medium text-purple-600 uppercase tracking-wider mt-1">Кадры</p>
                     </div>
                 </div>
             </a>
 
-            <!-- Карточка 4: Ежедневный отчёт по выработке -->
-            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
+            <!-- Карточка 4: Ежедневный отчёт по выработке (Март) -->
+            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Ежедневный отчёт по выработке</h2>
-                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Производство</p>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отчёт по выработке (Март)</h2>
+                        <p class="text-xs font-medium text-orange-600 uppercase tracking-wider mt-1">Производство</p>
                     </div>
                 </div>
             </a>
 
             <!-- Карточка 5: Остатки сырья -->
-            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-gray-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="bg-amber-100 p-3 rounded-xl text-amber-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-gray-800 leading-tight">Остатки сырья (Протвино)</h2>
-                        <p class="text-xs font-medium text-orange-600 uppercase tracking-wider mt-1">Склад</p>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Остатки (Протвино)</h2>
+                        <p class="text-xs font-medium text-amber-600 uppercase tracking-wider mt-1">Склад</p>
                     </div>
                 </div>
             </a>
 
         </div>
 
-        <footer class="mt-20 text-center text-gray-400 text-sm border-t border-gray-100 pt-8">
-            <p>&copy; 2024 Рабочий Дашборд. Создано для эффективного управления.</p>
+        <!-- Раздел: Архив выработки -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-12">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-slate-100 p-2 rounded-lg text-slate-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Выработка по месяцам</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="https://drive.google.com/open?id=18V2WcysxctwVsiPDzY5nALpRIqwBfdwM-WOFoyBNBn8&authuser=0" target="_blank" class="flex items-center p-4 bg-slate-50 rounded-xl border border-transparent hover:border-orange-300 hover:bg-orange-50 transition-all group">
+                    <span class="font-semibold text-slate-700 group-hover:text-orange-700">Январь</span>
+                </a>
+
+                <a href="https://docs.google.com/spreadsheets/d/1qqEpWFk_9Ronah2zuVTrUvej5VjWwEJ9OGPedWJCWCU/edit?gid=150147834#gid=150147834" target="_blank" class="flex items-center p-4 bg-slate-50 rounded-xl border border-transparent hover:border-orange-300 hover:bg-orange-50 transition-all group">
+                    <span class="font-semibold text-slate-700 group-hover:text-orange-700">Февраль</span>
+                </a>
+            </div>
+        </div>
+
+        <footer class="mt-20 text-center text-slate-400 text-sm border-t border-slate-100 pt-8">
+            <p>&copy; 2024 Панель управления производством. Все права защищены.</p>
         </footer>
     </div>
 
