@@ -9,23 +9,58 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        /* Стили для вертикального видео-окна в углу */
+        #video-container {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            width: 180px; /* Уменьшенная ширина для вертикального формата */
+            height: 320px; /* Увеличенная высота для вертикального формата */
+            z-index: 50;
+            overflow: hidden;
+            border-radius: 1.5rem; /* Более мягкое закругление */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 4px solid white;
+            background: #000; /* Фон, если видео еще грузится */
+        }
+
+        #video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Заполнение контейнера без черных полос */
+            opacity: 1;
+        }
+
+        /* Общий фон страницы */
+        body {
+            background-color: #f8fafc;
+        }
+
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #f97316; /* Оранжевый акцент */
+            border-color: #f97316;
         }
         .logo-glow {
             filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.15));
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen p-4 md:p-10">
+<body class="text-slate-800 font-sans min-h-screen p-4 md:p-10">
+
+    <!-- Вертикальное видео в правом нижнем углу -->
+    <div id="video-container" class="hidden md:block">
+        <video autoplay muted loop playsinline id="video-bg">
+            <source src="background.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
 
     <!-- Главный контейнер -->
-    <div class="max-w-6xl mx-auto">
+    <div class="relative z-10 max-w-6xl mx-auto">
         
         <!-- Верхняя панель с логотипом и названием -->
         <header class="mb-12 text-center flex flex-col items-center">
@@ -37,7 +72,7 @@
             <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
                 Панель управления производством
             </h1>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto italic">Эффективность через контроль и данные</p>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto italic">Эффективность через контроль и данные</p>
             <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
         </header>
 
@@ -158,7 +193,7 @@
             </div>
         </div>
 
-        <footer class="mt-20 text-center text-slate-400 text-sm border-t border-slate-100 pt-8">
+        <footer class="mt-20 text-center text-slate-500 text-sm border-t border-slate-200 pt-8 pb-12 md:pb-8">
             <p>&copy; 2024 Панель управления производством. Все права защищены.</p>
         </footer>
     </div>
