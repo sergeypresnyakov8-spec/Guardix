@@ -14,20 +14,20 @@
             position: fixed;
             right: 2rem;
             bottom: 2rem;
-            width: 180px; /* Уменьшенная ширина для вертикального формата */
-            height: 320px; /* Увеличенная высота для вертикального формата */
+            width: 180px;
+            height: 320px;
             z-index: 50;
             overflow: hidden;
-            border-radius: 1.5rem; /* Более мягкое закругление */
+            border-radius: 1.5rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             border: 4px solid white;
-            background: #000; /* Фон, если видео еще грузится */
+            background: #000;
         }
 
         #video-bg {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Заполнение контейнера без черных полос */
+            object-fit: cover;
             opacity: 1;
         }
 
@@ -62,18 +62,22 @@
     <!-- Главный контейнер -->
     <div class="relative z-10 max-w-6xl mx-auto">
         
-        <!-- Верхняя панель с логотипом и названием -->
-        <header class="mb-12 text-center flex flex-col items-center">
-            <!-- Логотип компании -->
-            <div class="mb-6 logo-glow">
-                <img src="logo.png" alt="Логотип Guardix" class="w-32 h-32 md:w-44 md:h-44 object-contain transition-transform duration-500 hover:scale-105" onerror="this.src='https://via.placeholder.com/150?text=Logo+Missing'">
+        <!-- Верхняя панель с фоновым логотипом и названием -->
+        <header class="relative mb-16 text-center flex flex-col items-center justify-center min-h-[250px] md:min-h-[300px]">
+            <!-- Логотип компании на заднем плане (увеличен и прозрачен) -->
+            <div class="absolute inset-0 flex items-center justify-center z-0 opacity-15 logo-glow pointer-events-none">
+                <!-- Размеры w-[250px] и w-[400px] делают его в 2+ раза больше старого -->
+                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[250px] h-[250px] md:w-[400px] md:h-[400px] object-contain" onerror="this.src='https://via.placeholder.com/400?text=Logo'">
             </div>
             
-            <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
-                Панель управления производством
-            </h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto italic">Контроль, аналитика, результат.</p>
-            <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+            <!-- Текст поверх логотипа (z-10 поднимает его наверх) -->
+            <div class="relative z-10 px-4">
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
+                    Панель управления производством
+                </h1>
+                <p class="text-lg text-slate-700 max-w-2xl mx-auto italic font-medium drop-shadow-sm">Эффективность через контроль и данные</p>
+                <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+            </div>
         </header>
 
         <!-- Сетка для основных кнопок -->
@@ -90,6 +94,38 @@
                     <div>
                         <h2 class="text-lg font-bold text-slate-800 leading-tight">Итоги 2025</h2>
                         <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Годовой отчет</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- НОВАЯ КАРТОЧКА: Выработка Плёнки -->
+            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div> <!-- Цветовой акцент -->
+                <div class="flex items-center space-x-4">
+                    <div class="bg-teal-100 p-3 rounded-xl text-teal-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <div class="pr-2">
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка Плёнки</h2>
+                        <p class="text-xs font-medium text-teal-600 uppercase tracking-wider mt-1">Ежедневный мониторинг</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- НОВАЯ КАРТОЧКА: Выработка Готовой Продукции -->
+            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div> <!-- Цветовой акцент -->
+                <div class="flex items-center space-x-4">
+                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                        </svg>
+                    </div>
+                    <div class="pr-2">
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка ГП</h2>
+                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Ежедневный мониторинг</p>
                     </div>
                 </div>
             </a>
@@ -172,26 +208,26 @@
         </div>
 
         <!-- Раздел: Архив выработки -->
-        <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-12">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="bg-slate-100 p-2 rounded-lg text-slate-600">
+        <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-12 card-hover transition-all group">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-slate-100 p-3 rounded-xl text-slate-600 group-hover:bg-orange-100 group-hover:text-orange-600 transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors">Отчёты Архив</h2>
+                        <p class="text-sm font-medium text-slate-500 mt-1">Перейти в папку Google Drive</p>
+                    </div>
+                </div>
+                <div class="text-slate-400 group-hover:text-orange-500 transition-colors hidden sm:block">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-800">Выработка по месяцам</h2>
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <a href="https://drive.google.com/open?id=18V2WcysxctwVsiPDzY5nALpRIqwBfdwM-WOFoyBNBn8&authuser=0" target="_blank" class="flex items-center p-4 bg-slate-50 rounded-xl border border-transparent hover:border-orange-300 hover:bg-orange-50 transition-all group">
-                    <span class="font-semibold text-slate-700 group-hover:text-orange-700">Январь</span>
-                </a>
-
-                <a href="https://docs.google.com/spreadsheets/d/1qqEpWFk_9Ronah2zuVTrUvej5VjWwEJ9OGPedWJCWCU/edit?gid=150147834#gid=150147834" target="_blank" class="flex items-center p-4 bg-slate-50 rounded-xl border border-transparent hover:border-orange-300 hover:bg-orange-50 transition-all group">
-                    <span class="font-semibold text-slate-700 group-hover:text-orange-700">Февраль</span>
-                </a>
-            </div>
-        </div>
+        </a>
 
         <footer class="mt-20 text-center text-slate-500 text-sm border-t border-slate-200 pt-8 pb-12 md:pb-8">
             <p>&copy; 2026 Панель управления производством. Designed by Economist.</p>
