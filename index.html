@@ -49,7 +49,7 @@
         }
     </style>
 </head>
-<body class="text-slate-800 font-sans min-h-screen p-4 md:p-10">
+<body class="text-slate-800 font-sans min-h-screen p-4 md:pt-4 md:px-10">
 
     <!-- Вертикальное видео в правом нижнем углу -->
     <div id="video-container" class="hidden md:block">
@@ -63,15 +63,15 @@
     <div class="relative z-10 max-w-6xl mx-auto">
         
         <!-- Верхняя панель с фоновым логотипом и названием -->
-        <header class="relative mb-16 text-center flex flex-col items-center justify-center min-h-[250px] md:min-h-[300px]">
-            <!-- Логотип компании на заднем плане (увеличен и прозрачен) -->
+        <!-- Уменьшена высота header и отступы, чтобы убрать пустоту сверху -->
+        <header class="relative mb-8 text-center flex flex-col items-center justify-center min-h-[280px] md:min-h-[380px]">
+            <!-- Логотип компании на заднем плане -->
             <div class="absolute inset-0 flex items-center justify-center z-0 opacity-15 logo-glow pointer-events-none">
-                <!-- Размеры w-[250px] и w-[400px] делают его в 2+ раза больше старого -->
-                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[250px] h-[250px] md:w-[400px] md:h-[400px] object-contain" onerror="this.src='https://via.placeholder.com/400?text=Logo'">
+                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[200px] h-[200px] md:w-[320px] md:h-[320px] object-contain" onerror="this.src='https://via.placeholder.com/400?text=Logo'">
             </div>
             
-            <!-- Текст поверх логотипа (z-10 поднимает его наверх) -->
-            <div class="relative z-10 px-4">
+            <!-- Текст теперь поднят выше, пустое место сверху удалено -->
+            <div class="relative z-10 px-4 mt-32 md:mt-48">
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
                     Панель управления производством
                 </h1>
@@ -83,24 +83,9 @@
         <!-- Сетка для основных кнопок -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="buttons-container">
             
-            <!-- Карточка: Итоги 2025 -->
-            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block bg-white rounded-2xl p-6 border-2 border-blue-100 card-hover shadow-sm">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-blue-600 p-3 rounded-xl text-white">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Итоги 2025</h2>
-                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Годовой отчет</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- НОВАЯ КАРТОЧКА: Выработка Плёнки -->
+            <!-- 1. Выработка Плёнки -->
             <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div> <!-- Цветовой акцент -->
+                <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div>
                 <div class="flex items-center space-x-4">
                     <div class="bg-teal-100 p-3 rounded-xl text-teal-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,9 +99,9 @@
                 </div>
             </a>
 
-            <!-- НОВАЯ КАРТОЧКА: Выработка Готовой Продукции -->
+            <!-- 2. Выработка Готовой Продукции -->
             <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div> <!-- Цветовой акцент -->
+                <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div>
                 <div class="flex items-center space-x-4">
                     <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,8 +115,9 @@
                 </div>
             </a>
 
-            <!-- Карточка 1: Отход по участкам -->
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
+            <!-- 3. Отход по участкам -->
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
                 <div class="flex items-center space-x-4">
                     <div class="bg-green-100 p-3 rounded-xl text-green-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +131,7 @@
                 </div>
             </a>
 
-            <!-- Карточка 2: Табель учета рабочего времени -->
+            <!-- Карточка: Табель учета рабочего времени -->
             <a href="https://docs.google.com/spreadsheets/d/1BBJ2wOiq3fAFM_AoBMGawjmA6-PVJG4BJSf277iyNBo/edit?gid=1908914099#gid=1908914099" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
@@ -160,7 +146,7 @@
                 </div>
             </a>
 
-            <!-- Карточка 3: Отчёт по людям -->
+            <!-- Карточка: Отчёт по людям -->
             <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-purple-100 p-3 rounded-xl text-purple-600">
@@ -175,7 +161,7 @@
                 </div>
             </a>
 
-            <!-- Карточка 4: Отчёты мастеров (Март) -->
+            <!-- Карточка: Отчёты мастеров (Март) -->
             <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
@@ -190,7 +176,7 @@
                 </div>
             </a>
 
-            <!-- Карточка 5: Остатки сырья -->
+            <!-- Карточка: Остатки сырья -->
             <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-amber-100 p-3 rounded-xl text-amber-600">
@@ -201,6 +187,21 @@
                     <div>
                         <h2 class="text-lg font-bold text-slate-800 leading-tight">Остатки (Протвино)</h2>
                         <p class="text-xs font-medium text-amber-600 uppercase tracking-wider mt-1">Склад</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Карточка: Итоги 2025 -->
+            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block bg-white rounded-2xl p-6 border-2 border-blue-100 card-hover shadow-sm">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-blue-600 p-3 rounded-xl text-white">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Итоги 2025</h2>
+                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Годовой отчет</p>
                     </div>
                 </div>
             </a>
