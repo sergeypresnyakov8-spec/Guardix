@@ -5,34 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления производством</title>
     <link rel="icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-    <!-- Подключаем Tailwind CSS -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Стили для вертикального видео-окна в углу */
-        #video-container {
-            position: fixed;
-            right: 2rem;
-            bottom: 2rem;
-            width: 180px;
-            height: 320px;
-            z-index: 50;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border: 4px solid white;
-            background: #000;
-        }
-
-        #video-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 1;
-        }
-
         /* Общий фон страницы */
         body {
             background-color: #f8fafc;
@@ -47,45 +24,30 @@
             border-color: #f97316;
         }
         .logo-glow {
-            filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.15));
+            filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.2));
         }
     </style>
 </head>
 <body class="text-slate-800 font-sans min-h-screen p-4 md:pt-4 md:px-10">
 
-    <!-- Вертикальное видео в правом нижнем углу -->
-    <div id="video-container" class="hidden md:block">
-        <video autoplay muted loop playsinline id="video-bg">
-            <source src="background.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-
-    <!-- Главный контейнер -->
     <div class="relative z-10 max-w-6xl mx-auto">
         
-        <!-- Верхняя панель с фоновым логотипом и названием -->
-        <!-- Уменьшена высота header и отступы, чтобы убрать пустоту сверху -->
-        <header class="relative mb-8 text-center flex flex-col items-center justify-center min-h-[280px] md:min-h-[380px]">
-            <!-- Логотип компании на заднем плане -->
-            <div class="absolute inset-0 flex items-center justify-center z-0 opacity-15 logo-glow pointer-events-none">
-                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[200px] h-[200px] md:w-[320px] md:h-[320px] object-contain" onerror="this.src='https://via.placeholder.com/400?text=Logo'">
+        <header class="relative mb-8 text-center flex flex-col items-center justify-center min-h-[300px] md:min-h-[420px]">
+            <div class="absolute inset-0 flex items-center justify-center z-0 opacity-25 logo-glow pointer-events-none">
+                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[280px] h-[280px] md:w-[450px] md:h-[450px] object-contain" onerror="this.src='https://via.placeholder.com/500?text=Logo'">
             </div>
             
-            <!-- Текст теперь поднят выше, пустое место сверху удалено -->
             <div class="relative z-10 px-4 mt-32 md:mt-48">
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
                     Панель управления производством
                 </h1>
-                <p class="text-lg text-slate-700 max-w-2xl mx-auto italic font-medium drop-shadow-sm">Эффективность через контроль и данные</p>
+                <p class="text-lg text-slate-700 max-w-2xl mx-auto italic font-medium drop-shadow-sm">ООО Империал Рус</p>
                 <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
             </div>
         </header>
 
-        <!-- Сетка для основных кнопок -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="buttons-container">
             
-            <!-- 1. Выработка Плёнки -->
             <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div>
                 <div class="flex items-center space-x-4">
@@ -96,12 +58,11 @@
                     </div>
                     <div class="pr-2">
                         <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка Плёнки</h2>
-                        <p class="text-xs font-medium text-teal-600 uppercase tracking-wider mt-1">Ежедневный мониторинг</p>
+                        <p class="text-xs font-medium text-teal-600 uppercase tracking-wider mt-1">Мониторинг</p>
                     </div>
                 </div>
             </a>
 
-            <!-- 2. Выработка Готовой Продукции -->
             <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div>
                 <div class="flex items-center space-x-4">
@@ -112,12 +73,11 @@
                     </div>
                     <div class="pr-2">
                         <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка ГП</h2>
-                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Ежедневный мониторинг</p>
+                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Мониторинг</p>
                     </div>
                 </div>
             </a>
 
-            <!-- 3. Отход по участкам -->
             <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
                 <div class="flex items-center space-x-4">
@@ -133,7 +93,6 @@
                 </div>
             </a>
 
-            <!-- Карточка: Табель учета рабочего времени -->
             <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
@@ -148,7 +107,6 @@
                 </div>
             </a>
 
-            <!-- Карточка: Количество людей в смене  -->
             <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-purple-100 p-3 rounded-xl text-purple-600">
@@ -163,7 +121,6 @@
                 </div>
             </a>
 
-            <!-- Карточка: Отчёты мастеров (Март) -->
             <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
@@ -178,7 +135,6 @@
                 </div>
             </a>
 
-            <!-- Карточка: Остатки сырья -->
             <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-amber-100 p-3 rounded-xl text-amber-600">
@@ -193,7 +149,6 @@
                 </div>
             </a>
 
-            <!-- Карточка: Итоги 2025 -->
             <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block bg-white rounded-2xl p-6 border-2 border-blue-100 card-hover shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-blue-600 p-3 rounded-xl text-white">
@@ -210,7 +165,6 @@
 
         </div>
 
-        <!-- Раздел: Архив выработки -->
         <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-12 card-hover transition-all group">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
