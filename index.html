@@ -15,16 +15,24 @@
             background-color: #f8fafc;
         }
 
+        /* Обновленный эффект наведения с учетом объема */
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
             border-color: #f97316;
         }
         .logo-glow {
             filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.2));
+        }
+        
+        /* Класс для придания объема кнопкам */
+        .volume-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), inset 0 2px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid #e2e8f0;
         }
     </style>
 </head>
@@ -46,12 +54,14 @@
             </div>
         </header>
 
+        <!-- Теперь у нас 9 кнопок, они идеально встанут в сетку 3х3 на больших экранах -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="buttons-container">
             
-            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+            <!-- ГРУППА 1: ВЫРАБОТКА -->
+            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-teal-100 p-3 rounded-xl text-teal-600">
+                    <div class="bg-teal-100 p-3 rounded-xl text-teal-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
@@ -63,10 +73,10 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600">
+                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                         </svg>
@@ -78,24 +88,42 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm relative overflow-hidden">
+            <!-- ГРУППА 2: ОТХОДЫ -->
+            <a href="https://docs.google.com/spreadsheets/d/1jzIq8JFClqkMIHc_EC0wdSZUFuCYfyAOnxzRqDNRH8I/edit?gid=644845847#gid=644845847" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-rose-500"></div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-rose-100 p-3 rounded-xl text-rose-600 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход</h2>
+                        <p class="text-xs font-medium text-rose-600 uppercase tracking-wider mt-1">Плёнка</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-green-100 p-3 rounded-xl text-green-600">
+                    <div class="bg-green-100 p-3 rounded-xl text-green-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход по участкам</h2>
-                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Мониторинг</p>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход</h2>
+                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Готовая Продукция</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
+            <!-- ОСТАЛЬНЫЕ КНОПКИ -->
+            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-blue-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-blue-100 p-3 rounded-xl text-blue-600">
+                    <div class="bg-blue-100 p-3 rounded-xl text-blue-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -107,9 +135,10 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-purple-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-purple-100 p-3 rounded-xl text-purple-600">
+                    <div class="bg-purple-100 p-3 rounded-xl text-purple-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
@@ -121,9 +150,10 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-orange-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
+                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
@@ -135,9 +165,10 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block bg-white rounded-2xl p-6 border border-slate-100 card-hover shadow-sm">
+            <a href="https://docs.google.com/spreadsheets/d/1JsSIzAoTBPpDiCcZ7KsydNVizr5tVLF-EsJvYjwqBbw/edit?gid=0#gid=0" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-2 h-full bg-amber-500"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-amber-100 p-3 rounded-xl text-amber-600">
+                    <div class="bg-amber-100 p-3 rounded-xl text-amber-600 shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
@@ -149,26 +180,28 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block bg-white rounded-2xl p-6 border-2 border-blue-100 card-hover shadow-sm">
+            <!-- Итоги 2025: Сделаем ее тоже объемной, но выделим цветом фона -->
+            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block rounded-2xl p-6 card-hover relative overflow-hidden" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.9); border: 1px solid #bfdbfe;">
+                <div class="absolute top-0 right-0 w-2 h-full bg-blue-600"></div>
                 <div class="flex items-center space-x-4">
-                    <div class="bg-blue-600 p-3 rounded-xl text-white">
+                    <div class="bg-blue-600 p-3 rounded-xl text-white shadow-md">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
                         <h2 class="text-lg font-bold text-slate-800 leading-tight">Итоги 2025</h2>
-                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Годовой отчет</p>
+                        <p class="text-xs font-medium text-blue-700 uppercase tracking-wider mt-1">Годовой отчет</p>
                     </div>
                 </div>
             </a>
 
         </div>
 
-        <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block bg-white rounded-3xl p-8 border border-slate-100 shadow-sm mb-12 card-hover transition-all group">
+        <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block volume-card rounded-3xl p-8 mb-12 card-hover transition-all group">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-slate-100 p-3 rounded-xl text-slate-600 group-hover:bg-orange-100 group-hover:text-orange-600 transition-colors">
+                    <div class="bg-slate-100 p-3 rounded-xl text-slate-600 group-hover:bg-orange-100 group-hover:text-orange-600 transition-colors shadow-inner">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
