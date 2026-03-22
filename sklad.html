@@ -95,7 +95,7 @@
 
             const calculateExtrusionTotal = () => {
                 if (!data || activeTab !== 'materials') return 0;
-                const categoriesToSum = ["Материалы", "Добавки", "Сырье с г. Донецка", "Вторичка г. Протвино", "Сырьё из г.Донецка", "Вторичка, г.Протвино"];
+                const categoriesToSum = ["Основное сырьё", "Добавки", "Сырье из г. Донецка", "Вторичка г. Протвино", "Сырьё из г.Донецка", "Вторичка, г.Протвино"];
                 let total = 0;
                 data.materials.forEach(group => {
                     if (categoriesToSum.includes(group.category)) {
@@ -191,7 +191,7 @@
                                     </div>
                                     <div>
                                         <h2 className="text-xl md:text-3xl font-black leading-tight mb-1 md:mb-2">Вес сырья для экструзии</h2>
-                                        <p className="text-[10px] md:text-sm font-bold text-indigo-100/90 uppercase tracking-[0.1em] md:tracking-[0.15em]">Материалы, Добавки, Сырьё из г.Донецка и Вторичка, г.Протвино</p>
+                                        <p className="text-[10px] md:text-sm font-bold text-indigo-100/90 uppercase tracking-[0.1em] md:tracking-[0.15em]">Основное сырьё, Добавки, Сырьё из г.Донецка и Вторичка, г.Протвино</p>
                                     </div>
                                 </div>
                                 <div className="text-center md:text-right relative z-10">
