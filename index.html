@@ -9,87 +9,139 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
     
-   <style>
-    /* Общий фон страницы */
+  <style>
     body {
+        margin: 0;
+        min-height: 100vh;
+
         background:
             linear-gradient(
-                rgba(15, 23, 42, 0.72),
-                rgba(15, 23, 42, 0.72)
+                rgba(8, 15, 28, 0.82),
+                rgba(8, 15, 28, 0.82)
             ),
             url('111.jfif') center center / cover no-repeat fixed;
 
-        background-color: #0f172a;
+        background-color: #08101c;
+
+        position: relative;
+        overflow-x: hidden;
     }
 
-    /* Эффект наведения */
-    .card-hover {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Тёмный cinematic overlay */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(59,130,246,0.08),
+                transparent 60%
+            );
+
+        pointer-events: none;
+        z-index: 0;
     }
 
-    .card-hover:hover {
-        transform: translateY(-6px) scale(1.01);
-
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.25),
-            0 10px 20px rgba(249, 115, 22, 0.18),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5);
-
-        border-color: #f97316;
+    /* Контент */
+    .relative.z-10 {
+        position: relative;
+        z-index: 2;
     }
 
-    /* Свечение логотипа */
+    /* HEADER */
+    header {
+        padding-top: 40px;
+    }
+
+    /* УБИРАЕМ белую плашку */
+    header::before {
+        display: none;
+    }
+
+    /* ЛОГО */
     .logo-glow {
+        opacity: 0.18;
+
         filter:
-            drop-shadow(0 0 30px rgba(249, 115, 22, 0.18))
-            drop-shadow(0 0 60px rgba(255, 255, 255, 0.08));
-    }
-
-    /* Glassmorphism карточек */
-    .volume-card {
-        background: rgba(255, 255, 255, 0.88);
-
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        box-shadow:
-            0 8px 32px rgba(15, 23, 42, 0.18),
-            inset 0 1px 0 rgba(255,255,255,0.6);
-
-        border: 1px solid rgba(255,255,255,0.35);
+            blur(0.5px)
+            drop-shadow(0 0 40px rgba(249,115,22,0.25));
     }
 
     /* Заголовок */
     h1 {
         color: white !important;
+
         text-shadow:
-            0 2px 10px rgba(0,0,0,0.35),
-            0 0 20px rgba(255,255,255,0.12);
+            0 5px 25px rgba(0,0,0,0.55);
+
+        letter-spacing: -1px;
     }
 
     /* Подзаголовок */
     header p {
-        color: rgba(255,255,255,0.82) !important;
+        color: rgba(255,255,255,0.72) !important;
+    }
+
+    /* Карточки */
+    .volume-card {
+        background: rgba(255,255,255,0.92);
+
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+
+        border: 1px solid rgba(255,255,255,0.22);
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.18);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    /* Hover */
+    .card-hover:hover {
+        transform: translateY(-6px);
+
+        box-shadow:
+            0 18px 45px rgba(0,0,0,0.28),
+            0 0 25px rgba(249,115,22,0.18);
+
+        border-color: rgba(249,115,22,0.45);
+    }
+
+    /* Текст карточек */
+    .volume-card h2 {
+        color: #1e293b !important;
+    }
+
+    /* Архив */
+    a.block.volume-card.rounded-3xl {
+        background: rgba(255,255,255,0.9);
     }
 
     /* Footer */
     footer {
-        color: rgba(255,255,255,0.55) !important;
-        border-color: rgba(255,255,255,0.12) !important;
+        color: rgba(255,255,255,0.5) !important;
+        border-color: rgba(255,255,255,0.08) !important;
     }
 
-    /* Адаптация под мобильные */
+    /* Mobile */
     @media (max-width: 768px) {
         body {
             background-attachment: scroll;
         }
 
-        .volume-card {
-            backdrop-filter: blur(8px);
+        h1 {
+            font-size: 2.2rem !important;
+            line-height: 1.1;
         }
 
-        h1 {
-            font-size: 2rem !important;
+        .volume-card {
+            backdrop-filter: blur(3px);
         }
     }
 </style>
@@ -103,7 +155,7 @@
                 <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[280px] h-[280px] md:w-[450px] md:h-[450px] object-contain" onerror="this.src='https://via.placeholder.com/500?text=Logo'">
             </div>
             
-            <div class="relative z-10 px-4 mt-32 md:mt-48">
+            <div class="relative z-10 px-4 mt-20 md:mt-28">
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
                     Панель управления производством
                 </h1>
