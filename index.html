@@ -9,142 +9,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
     
-  <style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-
-        background:
-            linear-gradient(
-                rgba(8, 15, 28, 0.82),
-                rgba(8, 15, 28, 0.82)
-            ),
-            url('111.jfif') center center / cover no-repeat fixed;
-
-        background-color: #08101c;
-
-        position: relative;
-        overflow-x: hidden;
-    }
-
-    /* Тёмный cinematic overlay */
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-
-        background:
-            radial-gradient(
-                circle at center,
-                rgba(59,130,246,0.08),
-                transparent 60%
-            );
-
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    /* Контент */
-    .relative.z-10 {
-        position: relative;
-        z-index: 2;
-    }
-
-    /* HEADER */
-    header {
-        padding-top: 40px;
-    }
-
-    /* УБИРАЕМ белую плашку */
-    header::before {
-        display: none;
-    }
-
-    /* ЛОГО */
-    .logo-glow {
-        opacity: 0.18;
-
-        filter:
-            blur(0.5px)
-            drop-shadow(0 0 40px rgba(249,115,22,0.25));
-    }
-
-    /* Заголовок */
-    h1 {
-        color: white !important;
-
-        text-shadow:
-            0 5px 25px rgba(0,0,0,0.55);
-
-        letter-spacing: -1px;
-    }
-
-    /* Подзаголовок */
-    header p {
-        color: rgba(255,255,255,0.72) !important;
-    }
-
-    /* Карточки */
-    .volume-card {
-        background: rgba(255,255,255,0.92);
-
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-
-        border: 1px solid rgba(255,255,255,0.22);
-
-        box-shadow:
-            0 10px 30px rgba(0,0,0,0.18);
-
-        transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            border-color 0.25s ease;
-    }
-
-    /* Hover */
-    .card-hover:hover {
-        transform: translateY(-6px);
-
-        box-shadow:
-            0 18px 45px rgba(0,0,0,0.28),
-            0 0 25px rgba(249,115,22,0.18);
-
-        border-color: rgba(249,115,22,0.45);
-    }
-
-    /* Текст карточек */
-    .volume-card h2 {
-        color: #1e293b !important;
-    }
-
-    /* Архив */
-    a.block.volume-card.rounded-3xl {
-        background: rgba(255,255,255,0.9);
-    }
-
-    /* Footer */
-    footer {
-        color: rgba(255,255,255,0.5) !important;
-        border-color: rgba(255,255,255,0.08) !important;
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
+    <style>
+        /* Общий фон страницы */
         body {
-            background-attachment: scroll;
+            background-color: #f8fafc;
         }
 
-        h1 {
-            font-size: 2.2rem !important;
-            line-height: 1.1;
+        /* Обновленный эффект наведения с учетом объема */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
+            border-color: #f97316;
+        }
+        .logo-glow {
+            filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.2));
+        }
+        
+        /* Класс для придания объема кнопкам */
         .volume-card {
-            backdrop-filter: blur(3px);
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), inset 0 2px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid #e2e8f0;
         }
-    }
-</style>
+    </style>
 </head>
 <body class="text-slate-800 font-sans min-h-screen p-4 md:pt-4 md:px-10">
 
@@ -155,7 +45,7 @@
                 <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[280px] h-[280px] md:w-[450px] md:h-[450px] object-contain" onerror="this.src='https://via.placeholder.com/500?text=Logo'">
             </div>
             
-            <div class="relative z-10 px-4 mt-20 md:mt-28">
+            <div class="relative z-10 px-4 mt-32 md:mt-48">
                 <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
                     Панель управления производством
                 </h1>
