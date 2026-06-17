@@ -10,6 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap');
+
         body {
             background-color: #f1f5f9;
             background-image: url('fon.jpg');
@@ -19,7 +21,7 @@
             background-attachment: fixed;
         }
 
-        /* Контуры, тени и эффект наведения */
+        /* Контуры, тени и эффект наведения для основной сетки */
         .card-hover {
             transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
@@ -37,11 +39,94 @@
             border: 1px solid #cbd5e1;
         }
 
-        .group:hover .group-icon {
-            transform: scale(1.08);
+        /* МОДИФИЦИРОВАННЫЕ БОЛЕЕ ПРЯМЫЕ 3D КНОПКИ */
+        .iso-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 25px 0;
+            flex-wrap: wrap;
         }
-        .group-icon {
-            transition: transform 0.2s ease;
+
+        .iso-card {
+            font-family: 'Roboto Condensed', sans-serif;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 250px;
+            height: 75px;
+            background: #fff;
+            padding-left: 20px;
+            position: relative;
+            /* Угол стал значительно прямее (-8deg вместо -30deg) */
+            transform: rotate(-8deg) skew(8deg) translate(0,0);
+            transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: -10px 10px 8px rgba(0,0,0,.12);
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+
+        /* Левая грань блока */
+        .iso-card::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -10px;
+            height: 100%;
+            width: 10px;
+            background: #cbd5e1;
+            transition: .4s;
+            transform: rotate(0deg) skewY(-45deg);
+            border-radius: 4px 0 0 4px;
+        }
+
+        /* Нижняя грань блока */
+        .iso-card::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: -5px;
+            height: 10px;
+            width: 100%;
+            background: #b1b1b1;
+            transition: .4s;
+            transform: rotate(0deg) skewX(-45deg);
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Эффект подъема при наведении */
+        .iso-card:hover {
+            transform: rotate(-8deg) skew(8deg) translate(12px,-8px);
+            box-shadow: -25px 25px 20px rgba(0,0,0,.22);
+        }
+
+        .iso-card .iso-icon, 
+        .iso-card h2, 
+        .iso-card p {
+            transition: .4s;
+        }
+
+        /* Синяя тема (Итоги) */
+        .iso-blue { border-left: 5px solid #2563eb; }
+        .iso-blue .iso-icon { color: #2563eb; }
+        
+        .iso-blue:hover { background: #2563eb; border-left-color: #1d4ed8; }
+        .iso-blue:hover::before { background: #1d4ed8; }
+        .iso-blue:hover::after { background: #3b82f6; }
+
+        /* Оранжевая тема (Архив) */
+        .iso-orange { border-left: 5px solid #ea580c; }
+        .iso-orange .iso-icon { color: #ea580c; }
+        
+        .iso-orange:hover { background: #ea580c; border-left-color: #c2410c; }
+        .iso-orange:hover::before { background: #c2410c; }
+        .iso-orange:hover::after { background: #f97316; }
+
+        .iso-card:hover .iso-icon,
+        .iso-card:hover h2,
+        .iso-card:hover p {
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -85,7 +170,8 @@
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-indigo-100 p-2 rounded-lg text-indigo-700 shadow-sm border border-indigo-200/50 flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></svg>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                        </svg>
                     </div>
                     <div>
                         <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Выработка ГП</h2>
@@ -201,35 +287,29 @@
 
         </main>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-shrink-0">
+        <div class="iso-wrapper flex-shrink-0">
             
-            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block rounded-xl p-3.5 card-hover relative overflow-hidden group border border-blue-300 shadow-sm" style="background: linear-gradient(135deg, rgba(239, 246, 255, 0.98) 0%, rgba(219, 234, 254, 0.98) 100%); backdrop-filter: blur(8px);">
-                <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
-                <div class="flex items-center space-x-3.5">
-                    <div class="bg-blue-600 p-2 rounded-lg text-white shadow-md group-icon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-base font-extrabold text-slate-800 tracking-tight leading-tight group-hover:text-blue-800 transition-colors">Итоги 2025</h2>
-                        <p class="text-[10px] font-black text-blue-700 uppercase tracking-wider mt-0.5">Годовой отчет</p>
-                    </div>
+            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="iso-card iso-blue">
+                <div class="iso-icon mr-3 flex-shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-sm font-bold tracking-tight text-slate-800 leading-tight">Итоги 2025</h2>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5 font-light">Годовой отчет</p>
                 </div>
             </a>
 
-            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block rounded-xl p-3.5 card-hover relative overflow-hidden group border border-orange-300 shadow-sm" style="background: linear-gradient(135deg, rgba(255, 247, 237, 0.98) 0%, rgba(255, 237, 213, 0.98) 100%); backdrop-filter: blur(8px);">
-                <div class="absolute top-0 right-0 w-1.5 h-full bg-orange-600"></div>
-                <div class="flex items-center space-x-3.5">
-                    <div class="bg-orange-500 p-2 rounded-lg text-white shadow-md group-icon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-base font-extrabold text-slate-800 tracking-tight leading-tight group-hover:text-orange-700 transition-colors">Отчёты Архив</h2>
-                        <p class="text-[10px] font-black text-orange-600 uppercase tracking-wider mt-0.5">Папка Google Drive</p>
-                    </div>
+            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="iso-card iso-orange">
+                <div class="iso-icon mr-3 flex-shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-sm font-bold tracking-tight text-slate-800 leading-tight">Отчёты Архив</h2>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5 font-light">Google Drive</p>
                 </div>
             </a>
 
