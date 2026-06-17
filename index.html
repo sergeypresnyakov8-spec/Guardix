@@ -4,237 +4,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления производством</title>
-    <link rel="icon" href="favicon.ico">
+    <link class="rounded-full" rel="icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Общий фон страницы с изображением */
         body {
-            background-color: #f8fafc; /* Резервный цвет на случай долгой загрузки */
-            background-image: url('fon.jpg'); /* Ссылка на файл фона */
-            background-size: cover; /* Масштабирование фона на весь экран */
-            background-position: center bottom; /* Выравнивание по центру и низу */
-            background-repeat: no-repeat; /* Запрет на повторение картинки */
-            background-attachment: fixed; /* Фиксация фона при прокрутке страницы */
+            background-color: #f1f5f9;
+            background-image: url('fon.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* Обновленный эффект наведения с учетом объема */
+        /* Контуры, тени и эффект наведения */
         .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
-            border-color: #f97316;
-        }
-        .logo-glow {
-            filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.2));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: rgba(249, 115, 22, 0.8) !important;
         }
         
-        /* Класс для придания объема кнопкам (сделан чуть прозрачным для сочетания с фоном) */
+        /* Контурная линия граней и подложка */
         .volume-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), inset 0 2px 0 rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.97) 100%);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02), inset 0 2px 0 rgba(255, 255, 255, 1);
+            border: 1px solid #cbd5e1;
+        }
+
+        .group:hover .group-icon {
+            transform: scale(1.08);
+        }
+        .group-icon {
+            transition: transform 0.2s ease;
         }
     </style>
 </head>
-<body class="text-slate-800 font-sans min-h-screen p-4 md:pt-4 md:px-10">
+<body class="text-slate-900 font-sans min-h-screen md:h-screen md:overflow-hidden p-4 md:p-6 flex flex-col justify-center">
 
-    <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="w-full max-w-5xl mx-auto flex flex-col justify-center h-full max-h-[920px] space-y-4">
         
-        <header class="relative mb-8 text-center flex flex-col items-center justify-center min-h-[300px] md:min-h-[420px]">
-            <div class="absolute inset-0 flex items-center justify-center z-0 opacity-25 logo-glow pointer-events-none">
-                <img src="logo.png" alt="Логотип Guardix Фоновый" class="w-[280px] h-[280px] md:w-[450px] md:h-[450px] object-contain" onerror="this.src='https://via.placeholder.com/500?text=Logo'">
+        <header class="relative text-center flex flex-col items-center justify-end min-h-[180px] md:min-h-[250px] flex-shrink-0 pt-16">
+            <div class="absolute inset-x-0 top-0 flex items-center justify-center z-0 opacity-50 pointer-events-none transform -translate-y-10 md:-translate-y-28">
+                <img src="logo.png" alt="Логотип Guardix" class="w-[300px] h-[300px] md:w-[440px] md:h-[440px] object-contain" onerror="this.src='https://via.placeholder.com/440?text=Logo'">
             </div>
             
-            <div class="relative z-10 px-4 mt-32 md:mt-48">
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
+            <div class="relative z-10 mt-auto pb-1">
+                <h1 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tight mb-0.5 drop-shadow-sm">
                     Панель управления производством
                 </h1>
-                <p class="text-lg text-slate-700 max-w-2xl mx-auto italic font-medium drop-shadow-sm">ООО Империал Рус</p>
-                <div class="mt-6 h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                <p class="text-xs md:text-sm text-slate-600 max-w-2xl mx-auto uppercase tracking-widest font-bold">ООО Империал Рус</p>
+                <div class="mt-2 h-1 w-16 bg-orange-500 mx-auto rounded-full animate-pulse"></div>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="buttons-container">
+        <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             
-            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-teal-100 p-3 rounded-xl text-teal-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-teal-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-teal-100 p-2 rounded-lg text-teal-700 shadow-sm border border-teal-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
                     </div>
-                    <div class="pr-2">
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка Плёнки</h2>
-                        <p class="text-xs font-medium text-teal-600 uppercase tracking-wider mt-1">Мониторинг</p>
+                    <div>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Выработка Плёнки</h2>
+                        <p class="text-[10px] font-black text-teal-700 uppercase tracking-wider mt-0.5">Мониторинг</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-indigo-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-indigo-100 p-3 rounded-xl text-indigo-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                        </svg>
+            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-indigo-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-indigo-100 p-2 rounded-lg text-indigo-700 shadow-sm border border-indigo-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></svg>
                     </div>
-                    <div class="pr-2">
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Выработка ГП</h2>
-                        <p class="text-xs font-medium text-indigo-600 uppercase tracking-wider mt-1">Мониторинг</p>
+                    <div>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Выработка ГП</h2>
+                        <p class="text-[10px] font-black text-indigo-700 uppercase tracking-wider mt-0.5">Мониторинг</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1jzIq8JFClqkMIHc_EC0wdSZUFuCYfyAOnxzRqDNRH8I/edit?gid=644845847#gid=644845847" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-rose-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-rose-100 p-3 rounded-xl text-rose-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1jzIq8JFClqkMIHc_EC0wdSZUFuCYfyAOnxzRqDNRH8I/edit?gid=644845847#gid=644845847" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-rose-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-rose-100 p-2 rounded-lg text-rose-700 shadow-sm border border-rose-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход</h2>
-                        <p class="text-xs font-medium text-rose-600 uppercase tracking-wider mt-1">Плёнка</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Отход</h2>
+                        <p class="text-[10px] font-black text-rose-700 uppercase tracking-wider mt-0.5">Плёнка</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-green-100 p-3 rounded-xl text-green-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-emerald-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-emerald-100 p-2 rounded-lg text-emerald-700 shadow-sm border border-emerald-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отход</h2>
-                        <p class="text-xs font-medium text-green-600 uppercase tracking-wider mt-1">Готовая Продукция</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Отход</h2>
+                        <p class="text-[10px] font-black text-emerald-700 uppercase tracking-wider mt-0.5">Готовая Продукция</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-blue-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-blue-100 p-3 rounded-xl text-blue-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-blue-100 p-2 rounded-lg text-blue-700 shadow-sm border border-blue-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Табель учета рабочего времени</h2>
-                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1">Персонал</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Табель учета времени</h2>
+                        <p class="text-[10px] font-black text-blue-700 uppercase tracking-wider mt-0.5">Персонал</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-purple-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-purple-100 p-3 rounded-xl text-purple-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-purple-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-purple-100 p-2 rounded-lg text-purple-700 shadow-sm border border-purple-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Количество людей в смене</h2>
-                        <p class="text-xs font-medium text-purple-600 uppercase tracking-wider mt-1">Кадры</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Людей в смене</h2>
+                        <p class="text-[10px] font-black text-purple-700 uppercase tracking-wider mt-0.5">Кадры</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-orange-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-orange-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-orange-100 p-2 rounded-lg text-orange-700 shadow-sm border border-orange-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Отчёты мастеров</h2>
-                        <p class="text-xs font-medium text-orange-600 uppercase tracking-wider mt-1">Производство</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Отчёты мастеров</h2>
+                        <p class="text-[10px] font-black text-orange-700 uppercase tracking-wider mt-0.5">Производство</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://sergeypresnyakov8-spec.github.io/Moy_Lybimyi_Sklad/" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-amber-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-amber-100 p-3 rounded-xl text-amber-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://sergeypresnyakov8-spec.github.io/Moy_Lybimyi_Sklad/" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-amber-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-amber-100 p-2 rounded-lg text-amber-700 shadow-sm border border-amber-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Остатки склада (г. Протвино)</h2>
-                        <p class="text-xs font-medium text-amber-600 uppercase tracking-wider mt-1">Краски, Сырьё</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Остатки склада (Протвино)</h2>
+                        <p class="text-[10px] font-black text-amber-700 uppercase tracking-wider mt-0.5">Краски, Сырьё</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://sergeypresnyakov8-spec.github.io/Flexo/" target="_blank" class="block volume-card rounded-2xl p-6 card-hover relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-2 h-full bg-pink-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-pink-100 p-3 rounded-xl text-pink-600 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://sergeypresnyakov8-spec.github.io/Flexo/" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-pink-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-pink-100 p-2 rounded-lg text-pink-700 shadow-sm border border-pink-200/50 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Калькулятор Флексопечати</h2>
-                        <p class="text-xs font-medium text-pink-600 uppercase tracking-wider mt-1">Инструмент</p>
+                        <h2 class="text-sm md:text-base font-extrabold text-slate-800 tracking-tight leading-tight">Калькулятор Флексопечати</h2>
+                        <p class="text-[10px] font-black text-pink-700 uppercase tracking-wider mt-0.5">Инструмент</p>
                     </div>
                 </div>
             </a>
 
-        </div>
+        </main>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-shrink-0">
             
-            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block rounded-2xl p-6 card-hover relative overflow-hidden group" style="background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.95) 100%); backdrop-filter: blur(5px); box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.9); border: 1px solid rgba(191, 219, 254, 0.8);">
-                <div class="absolute top-0 right-0 w-2 h-full bg-blue-600"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-blue-600 p-3 rounded-xl text-white shadow-md">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="block rounded-xl p-3.5 card-hover relative overflow-hidden group border border-blue-300 shadow-sm" style="background: linear-gradient(135deg, rgba(239, 246, 255, 0.98) 0%, rgba(219, 234, 254, 0.98) 100%); backdrop-filter: blur(8px);">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-blue-600 p-2 rounded-lg text-white shadow-md group-icon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-slate-800 leading-tight group-hover:text-blue-700 transition-colors">Итоги 2025</h2>
-                        <p class="text-sm font-medium text-blue-700 mt-1">Годовой отчет</p>
+                        <h2 class="text-base font-extrabold text-slate-800 tracking-tight leading-tight group-hover:text-blue-800 transition-colors">Итоги 2025</h2>
+                        <p class="text-[10px] font-black text-blue-700 uppercase tracking-wider mt-0.5">Годовой отчет</p>
                     </div>
                 </div>
             </a>
 
-            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block rounded-2xl p-6 card-hover relative overflow-hidden group" style="background: linear-gradient(135deg, rgba(255, 247, 237, 0.95) 0%, rgba(255, 237, 213, 0.95) 100%); backdrop-filter: blur(5px); box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.9); border: 1px solid rgba(254, 215, 170, 0.8);">
-                <div class="absolute top-0 right-0 w-2 h-full bg-orange-500"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="bg-orange-500 p-3 rounded-xl text-white shadow-md">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="block rounded-xl p-3.5 card-hover relative overflow-hidden group border border-orange-300 shadow-sm" style="background: linear-gradient(135deg, rgba(255, 247, 237, 0.98) 0%, rgba(255, 237, 213, 0.98) 100%); backdrop-filter: blur(8px);">
+                <div class="absolute top-0 right-0 w-1.5 h-full bg-orange-600"></div>
+                <div class="flex items-center space-x-3.5">
+                    <div class="bg-orange-500 p-2 rounded-lg text-white shadow-md group-icon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-xl font-bold text-slate-800 leading-tight group-hover:text-orange-600 transition-colors">Отчёты Архив</h2>
-                        <p class="text-sm font-medium text-orange-600 mt-1">Папка Google Drive</p>
+                        <h2 class="text-base font-extrabold text-slate-800 tracking-tight leading-tight group-hover:text-orange-700 transition-colors">Отчёты Архив</h2>
+                        <p class="text-[10px] font-black text-orange-600 uppercase tracking-wider mt-0.5">Папка Google Drive</p>
                     </div>
                 </div>
             </a>
 
         </div>
 
-        <footer class="mt-20 text-center text-slate-500 text-sm border-t border-slate-300 pt-8 pb-12 md:pb-8 backdrop-blur-sm bg-white/30 rounded-t-xl">
-            <p>&copy; 2026 Панель управления производством. Designed by Economist.</p>
+        <footer class="text-center text-slate-500 text-[11px] border-t border-slate-300 pt-3 flex-shrink-0 backdrop-blur-sm bg-white/20 rounded-t-lg">
+            <p class="font-medium tracking-wide">&copy; 2026 Панель управления производством. Designed by Economist.</p>
         </footer>
     </div>
 
