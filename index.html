@@ -11,6 +11,7 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 
         body {
             background-color: #f1f5f9;
@@ -59,7 +60,6 @@
             background: #fff;
             padding-left: 20px;
             position: relative;
-            /* Угол стал значительно прямее (-8deg вместо -30deg) */
             transform: rotate(-8deg) skew(8deg) translate(0,0);
             transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: -10px 10px 8px rgba(0,0,0,.12);
@@ -128,15 +128,28 @@
         .iso-card:hover p {
             color: #ffffff !important;
         }
+
+        /* СТИЛИ ДЛЯ ЦИТАТЫ */
+        .quote-container {
+            font-family: 'Marck Script', cursive;
+        }
+        .quote-author {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
     </style>
 </head>
-<body class="text-slate-900 font-sans min-h-screen md:h-screen md:overflow-hidden p-4 md:p-6 flex flex-col justify-center">
+<body class="text-slate-900 font-sans min-h-screen md:h-screen md:overflow-hidden p-4 md:p-6 flex flex-col justify-center relative">
+
+    <div class="quote-container static mx-auto mb-4 md:mb-0 md:absolute md:top-6 md:right-6 max-w-xs md:max-w-sm bg-white/90 backdrop-blur-md p-4 rounded-xl border border-slate-300 shadow-md z-50 text-center md:text-right transition-all duration-300 hover:bg-white/95">
+        <p id="production-quote" class="text-base md:text-lg text-slate-800 leading-tight mb-1">... Настройка процессов ...</p>
+        <p id="production-author" class="quote-author text-[10px] uppercase tracking-wider font-bold text-orange-600"></p>
+    </div>
 
     <div class="w-full max-w-5xl mx-auto flex flex-col justify-center h-full max-h-[920px] space-y-4">
         
-        <header class="relative text-center flex flex-col items-center justify-end min-h-[180px] md:min-h-[250px] flex-shrink-0 pt-16">
-            <div class="absolute inset-x-0 top-0 flex items-center justify-center z-0 opacity-50 pointer-events-none transform -translate-y-10 md:-translate-y-28">
-                <img src="logo.png" alt="Логотип Guardix" class="w-[300px] h-[300px] md:w-[440px] md:h-[440px] object-contain" onerror="this.src='https://via.placeholder.com/440?text=Logo'">
+        <header class="relative text-center flex flex-col items-center justify-end min-h-[140px] md:min-h-[220px] flex-shrink-0 pt-6 md:pt-16">
+            <div class="absolute inset-x-0 top-0 flex items-center justify-center z-0 opacity-50 pointer-events-none transform -translate-y-16 md:-translate-y-28">
+                <img src="logo.png" alt="Логотип Guardix" class="w-[260px] h-[260px] md:w-[440px] md:h-[440px] object-contain" onerror="this.src='https://via.placeholder.com/440?text=Logo'">
             </div>
             
             <div class="relative z-10 mt-auto pb-1">
@@ -320,5 +333,76 @@
         </footer>
     </div>
 
+    <script>
+        const quotes = [
+            { text: "«Качество — это делать что-то правильно, даже когда никто не смотрит».", author: "Генри Форд" },
+            { text: "«Если вы не можете описать то, что вы делаете, как процесс, вы не знаете, что вы делаете».", author: "У. Э. Деминг" },
+            { text: "«Улучшать что-то на 1% каждый день — лучше, чем пытаться улучшить на 100% за один раз».", author: "Философия Кайдзен" },
+            { text: "«То, что нельзя измерить, нельзя улучшить».", author: "Питер Друкер" },
+            { text: "«Цена за качество платится один раз, цена за плохой товар — постоянно».", author: "Бережливое производство" },
+            { text: "«Беспорядок на рабочем месте — это беспорядок в голове. Чистота — первый шаг к эффективности».", author: "Таити Оно" },
+            { text: "«Самая опасная фраза в производстве: \"Мы всегда так делали\"».", author: "Грейс Хоппер" },
+            { text: "«Сложные системы работают только тогда, когда они построены на базе простых и работающих систем».", author: "Джон Галл" },
+            { text: "«Хороший процесс дает хороший результат, а не случайную удачу».", author: "Масааки Имаи" },
+            { text: "«Никогда не принимайте брак, не производите брак и не передавайте брак».", author: "Правило \"Три НЕ\" в TQM" },
+            { text: "«Соберите правильных людей в правильном месте, и они сами найдут правильные решения».", author: "Ли Якокка" },
+            { text: "«Менеджер делает вещи правильно. Лидер делает правильные вещи».", author: "Уоррен Беннис" },
+            { text: "«Если вы хотите построить корабль, не надо созывать людей собирать доски... Зажгите в них стремление к морю».", author: "А. де Сент-Экзюпери" },
+            { text: "«Ни один человек не может быть идеальным, но команда может быть идеальной».", author: "Рэй Далио" },
+            { text: "«Люди уходят не с работы, они уходят от плохих начальников».", author: "Маркус Бакингем" },
+            { text: "«Прежде чем стать лидером, успех заключается в собственном росте. Когда вы становитесь лидером, успех заключается в росте других».", author: "Джек Уэлч" },
+            { text: "«Доверие — это клей, который удерживает команду вместе, и смазка, продвигающая процессы».", author: "Стивен Кови" },
+            { text: "«Слушайте своих людей на конвейере. Они знают о проблемах раньше, чем вы увидите их в отчетах».", author: "Опыт производства" },
+            { text: "«Хвалите прилюдно, критикуйте наедине».", author: "Правило менеджмента" },
+            { text: "«Лучший способ мотивировать — не мешать работать тем, кто хочет работать».", author: "Роберт Таунсенд" },
+            { text: "«Не ищите виновных, ищите пути решения».", author: "Генри Форд" },
+            { text: "«Если у вас есть проблема — идите на \"Гембу\" и посмотрите на нее своими глазами».", author: "Таити Оно" },
+            { text: "«Задайте вопрос \"Почему?\" пять раз, чтобы добраться до истинной причины проблемы».", author: "Сакити Тоёда" },
+            { text: "«В разгар хаоса всегда есть возможность».", author: "Сунь-Цзы" },
+            { text: "«Мудрый человек исправляет свои ошибки, глупый — ищет оправдания».", author: "Китайская мудрость" },
+            { text: "«Проблема — это не тупик. Это указатель направления для улучшений».", author: "Мудрость лидера" },
+            { text: "«Ошибки — это знаки препинания в тексте опыта».", author: "Стефан Цвейг" },
+            { text: "«Если вы не управляете кризисом, кризис начнет управлять вами».", author: "Нассим Талеб" },
+            { text: "«План — ничто, планирование — всё».", author: "Дуайт Эйзенхауэр" },
+            { text: "«Трудные времена создают сильных лидеров».", author: "Джи Кристиан Хофман" },
+            { text: "«Дисциплина — это решение делать то, чего не хочется, чтобы достичь того, чего очень хочется».", author: "Джон Maxwell" },
+            { text: "«Нет ничего более бесполезного, чем эффективно делать то, чего вообще делать не следовало бы».", author: "Питер Друкер" },
+            { text: "«Время — самый дефицитный ресурс на производстве. Его нельзя накопить, можно только сэкономить».", author: "Принцип тайм-менеджмента" },
+            { text: "«Успех — это не результат случайности, это результат фокуса на главном».", author: "Стив Джобс" },
+            { text: "«Делайте сначала то, что необходимо, затем то, что возможно, и вы увидите, что делаете невозможное».", author: "Франциск Ассизский" },
+            { text: "«Две самые тяжелые вещи на производстве — это начать и остановиться вовремя».", author: "Правило времени" },
+            { text: "«Порядок экономит время, система экономит силы».", author: "Опыт мастеров" },
+            { text: "«Промедление — вор времени и убийца дедлайнов».", author: "Эдвард Юнг" },
+            { text: "«Секрет того, чтобы двигаться вперед — это начать».", author: "Марк Твен" },
+            { text: "«Простота — высшая степень искусства управления».", author: "Леонардо да Винчи" },
+            { text: "«Спокойствие на производстве начинается со спокойствия его начальника».", author: "Наблюдение" },
+            { text: "«Не воспитывайте своих подчиненных, воспитывайте себя. Они все равно будут похожи на вас».", author: "Английская пословица" },
+            { text: "«Характер лидера проявляется в том, как он реагирует на плохие новости».", author: "Билл Гейтс" },
+            { text: "«Управлять с помощью страха легко, управлять с помощью уважения — искусство».", author: "Золотое правило" },
+            { text: "«Великие дела совершаются не единым порывом, а множеством мелких дел, собранных воедино».", author: "Винсент Ван Гог" },
+            { text: "«Мудрость руководителя — знать, когда нужно нажать на газ, а когда — дать механизму поработать самому».", author: "Практическое правило" },
+            { text: "«Если вы хотите иметь то, чего никогда не имели, вам придется делать то, чего никогда не делали».", author: "Коко Шанель" },
+            { text: "«Тот, кто перестал учиться, стареет, будь ему 20 или 80 лет».", author: "Генри Форд" },
+            { text: "«Лидерство — это не позиция. Это выбор и ответственность».", author: "Стивен Кови" },
+            { text: "«Завтрашний день принадлежит тем, кто готовится к нему сегодня».", author: "Малкольм Икс" }
+        ];
+
+        function setRandomQuote() {
+            try {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const randomQuote = quotes[randomIndex];
+                document.getElementById('production-quote').innerText = randomQuote.text;
+                document.getElementById('production-author').innerText = randomQuote.author;
+            } catch (e) {
+                console.error("Ошибка при выборе цитаты: ", e);
+            }
+        }
+
+        // Прямой мгновенный запуск
+        setRandomQuote();
+
+        // Дублирующий запуск после полной загрузки всех шрифтов и стилей
+        window.onload = setRandomQuote;
+    </script>
 </body>
 </html>
