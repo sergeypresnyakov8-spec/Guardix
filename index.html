@@ -40,13 +40,13 @@
             border: 1px solid #cbd5e1;
         }
 
-        /* МОДИФИЦИРОВАННЫЕ БОЛЕЕ ПРЯМЫЕ 3D КНОПКИ */
+        /* 3D КНОПКИ */
         .iso-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 40px;
-            padding: 25px 0;
+            padding: 20px 0 10px 0;
             flex-wrap: wrap;
         }
 
@@ -55,10 +55,10 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            width: 250px;
-            height: 75px;
+            width: 220px;
+            height: 65px;
             background: #fff;
-            padding-left: 20px;
+            padding-left: 16px;
             position: relative;
             transform: rotate(-8deg) skew(8deg) translate(0,0);
             transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -140,11 +140,6 @@
 </head>
 <body class="text-slate-900 font-sans min-h-screen md:h-screen md:overflow-hidden p-4 md:p-6 flex flex-col justify-center relative">
 
-    <div class="quote-container static mx-auto mb-4 md:mb-0 md:absolute md:top-6 md:right-6 max-w-xs md:max-w-sm bg-white/90 backdrop-blur-md p-4 rounded-xl border border-slate-300 shadow-md z-50 text-center md:text-right transition-all duration-300 hover:bg-white/95">
-        <p id="production-quote" class="text-base md:text-lg text-slate-800 leading-tight mb-1">... Настройка процессов ...</p>
-        <p id="production-author" class="quote-author text-[10px] uppercase tracking-wider font-bold text-orange-600"></p>
-    </div>
-
     <div class="w-full max-w-5xl mx-auto flex flex-col justify-center h-full max-h-[920px] space-y-4">
         
         <header class="relative text-center flex flex-col items-center justify-end min-h-[140px] md:min-h-[220px] flex-shrink-0 pt-6 md:pt-16">
@@ -161,7 +156,7 @@
             </div>
         </header>
 
-        <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl mx-auto">
             
             <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-teal-600"></div>
@@ -328,6 +323,11 @@
 
         </div>
 
+        <div class="quote-container text-center max-w-4xl w-full mx-auto px-4 py-1 flex-shrink-0 z-10">
+            <p id="production-quote" class="text-lg md:text-xl text-slate-800 leading-snug mb-0.5">... Настройка процессов ...</p>
+            <p id="production-author" class="quote-author text-[11px] uppercase tracking-widest font-bold text-orange-600"></p>
+        </div>
+
         <footer class="text-center text-slate-500 text-[11px] border-t border-slate-300 pt-3 flex-shrink-0 backdrop-blur-sm bg-white/20 rounded-t-lg">
             <p class="font-medium tracking-wide">&copy; 2026 Панель управления производством. Designed by Economist.</p>
         </footer>
@@ -398,10 +398,7 @@
             }
         }
 
-        // Прямой мгновенный запуск
         setRandomQuote();
-
-        // Дублирующий запуск после полной загрузки всех шрифтов и стилей
         window.onload = setRandomQuote;
     </script>
 </body>
