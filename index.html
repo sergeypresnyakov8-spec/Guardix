@@ -22,21 +22,22 @@
             background-attachment: fixed;
         }
 
-        /* Контуры, тени и эффект наведения для основной сетки */
+        /* Эффект наведения для основной сетки */
         .card-hover {
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .card-hover:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px) scale(1.015);
+            box-shadow: 0 16px 24px -6px rgba(0, 0, 0, 0.12), 0 6px 10px -4px rgba(0, 0, 0, 0.06);
             border-color: rgba(249, 115, 22, 0.8) !important;
         }
         
-        /* Контурная линия граней и подложка */
+        /* Стеклянная подложка */
         .volume-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.97) 100%);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02), inset 0 2px 0 rgba(255, 255, 255, 1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 250, 252, 0.94) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255, 255, 255, 1);
             border: 1px solid #cbd5e1;
         }
 
@@ -107,18 +108,16 @@
             transition: .4s;
         }
 
-        /* Синяя тема (Итоги) */
+        /* Синяя тема */
         .iso-blue { border-left: 5px solid #2563eb; }
         .iso-blue .iso-icon { color: #2563eb; }
-        
         .iso-blue:hover { background: #2563eb; border-left-color: #1d4ed8; }
         .iso-blue:hover::before { background: #1d4ed8; }
         .iso-blue:hover::after { background: #3b82f6; }
 
-        /* Оранжевая тема (Архив) */
+        /* Оранжевая тема */
         .iso-orange { border-left: 5px solid #ea580c; }
         .iso-orange .iso-icon { color: #ea580c; }
-        
         .iso-orange:hover { background: #ea580c; border-left-color: #c2410c; }
         .iso-orange:hover::before { background: #c2410c; }
         .iso-orange:hover::after { background: #f97316; }
@@ -136,14 +135,18 @@
         .quote-author {
             font-family: 'Roboto Condensed', sans-serif;
         }
+
+        /* Классы для начального состояния анимации (скрыты до загрузки скрипта) */
+        .animate-fade-in { opacity: 0; }
+        .animate-cascade { opacity: 0; }
     </style>
 </head>
 <body class="text-slate-900 font-sans min-h-screen md:h-screen md:overflow-hidden p-4 md:p-6 flex flex-col justify-center relative">
 
     <div class="w-full max-w-5xl mx-auto flex flex-col justify-center h-full max-h-[920px] space-y-4">
         
-        <header class="relative text-center flex flex-col items-center justify-end min-h-[140px] md:min-h-[220px] flex-shrink-0 pt-6 md:pt-16">
-            <div class="absolute inset-x-0 top-0 flex items-center justify-center z-0 opacity-50 pointer-events-none transform -translate-y-16 md:-translate-y-28">
+        <header id="main-header" class="animate-fade-in relative text-center flex flex-col items-center justify-end min-h-[140px] md:min-h-[220px] flex-shrink-0 pt-6 md:pt-16">
+            <div class="absolute inset-x-0 top-0 flex items-center justify-center z-0 opacity-40 pointer-events-none transform -translate-y-16 md:-translate-y-28">
                 <img src="logo.png" alt="Логотип Guardix" class="w-[260px] h-[260px] md:w-[440px] md:h-[440px] object-contain" onerror="this.src='https://via.placeholder.com/440?text=Logo'">
             </div>
             
@@ -158,7 +161,7 @@
 
         <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl mx-auto">
             
-            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1ctUjrLakhQzx_TPtwKyVl9GUOMmxofR9xH_uimavjgI/edit?gid=1088589703#gid=1088589703" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-teal-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-teal-100 p-2 rounded-lg text-teal-700 shadow-sm border border-teal-200/50 flex-shrink-0">
@@ -173,7 +176,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1KY_NTotX15taVZSxAHQVXR1lzkE2X-bOVZNqtNGTMOg/edit?gid=1660495135#gid=1660495135" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-indigo-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-indigo-100 p-2 rounded-lg text-indigo-700 shadow-sm border border-indigo-200/50 flex-shrink-0">
@@ -188,7 +191,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1jzIq8JFClqkMIHc_EC0wdSZUFuCYfyAOnxzRqDNRH8I/edit?gid=644845847#gid=644845847" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1jzIq8JFClqkMIHc_EC0wdSZUFuCYfyAOnxzRqDNRH8I/edit?gid=644845847#gid=644845847" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-rose-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-rose-100 p-2 rounded-lg text-rose-700 shadow-sm border border-rose-200/50 flex-shrink-0">
@@ -203,7 +206,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1-YDvE7emNEwS_rhy1lifZScbNP-z9Ci_sIQT2wyKjoc/edit?gid=1003336684#gid=1003336684" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-emerald-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-emerald-100 p-2 rounded-lg text-emerald-700 shadow-sm border border-emerald-200/50 flex-shrink-0">
@@ -218,7 +221,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1SdPevXKFRQxifJMJr0GaptMyXM-7dZIc9hgjwb6CqKc/edit?gid=1446204136#gid=1446204136" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-blue-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-blue-100 p-2 rounded-lg text-blue-700 shadow-sm border border-blue-200/50 flex-shrink-0">
@@ -233,7 +236,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1wkwSZfr48x7tHAMduWYgjkUDm6BxA3PcVIQz3dDfFW8/edit" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-purple-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-purple-100 p-2 rounded-lg text-purple-700 shadow-sm border border-purple-200/50 flex-shrink-0">
@@ -248,7 +251,7 @@
                 </div>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://docs.google.com/spreadsheets/d/1Ihd8K-HIdCaVKi1f377hvCO-9iq2YgeyVGdBhJUTsdk/edit?gid=659861680#gid=659861680" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-orange-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-orange-100 p-2 rounded-lg text-orange-700 shadow-sm border border-orange-200/50 flex-shrink-0">
@@ -263,7 +266,7 @@
                 </div>
             </a>
 
-            <a href="https://sergeypresnyakov8-spec.github.io/Moy_Lybimyi_Sklad/" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://sergeypresnyakov8-spec.github.io/Moy_Lybimyi_Sklad/" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-amber-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-amber-100 p-2 rounded-lg text-amber-700 shadow-sm border border-amber-200/50 flex-shrink-0">
@@ -278,7 +281,7 @@
                 </div>
             </a>
 
-            <a href="https://sergeypresnyakov8-spec.github.io/Flexo/" target="_blank" class="block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
+            <a href="https://sergeypresnyakov8-spec.github.io/Flexo/" target="_blank" class="animate-cascade block volume-card rounded-xl p-3.5 card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-1.5 h-full bg-pink-600"></div>
                 <div class="flex items-center space-x-3.5">
                     <div class="bg-pink-100 p-2 rounded-lg text-pink-700 shadow-sm border border-pink-200/50 flex-shrink-0">
@@ -297,7 +300,7 @@
 
         <div class="iso-wrapper flex-shrink-0">
             
-            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="iso-card iso-blue">
+            <a href="https://docs.google.com/spreadsheets/d/1yI4s1D-wwFTLu4FZAiy1PJ7Bap4mwiG7zy_B2MX-pNM/edit?gid=1239093165#gid=1239093165" target="_blank" class="animate-cascade iso-card iso-blue">
                 <div class="iso-icon mr-3 flex-shrink-0">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -309,7 +312,7 @@
                 </div>
             </a>
 
-            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="iso-card iso-orange">
+            <a href="https://drive.google.com/drive/folders/1Jc0Mr9PaSUgDRCnGqjOWbVGg4S8QGgPI?ths=true" target="_blank" class="animate-cascade iso-card iso-orange">
                 <div class="iso-icon mr-3 flex-shrink-0">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -323,7 +326,7 @@
 
         </div>
 
-        <div class="quote-container text-center max-w-4xl w-full mx-auto px-4 py-1 flex-shrink-0 z-10">
+        <div id="quote-block" class="animate-fade-in quote-container text-center max-w-4xl w-full mx-auto px-4 py-1 flex-shrink-0 z-10">
             <p id="production-quote" class="text-lg md:text-xl text-slate-800 leading-snug mb-0.5">... Настройка процессов ...</p>
             <p id="production-author" class="quote-author text-[11px] uppercase tracking-widest font-bold text-orange-600"></p>
         </div>
@@ -398,8 +401,59 @@
             }
         }
 
-        setRandomQuote();
-        window.onload = setRandomQuote;
+        // Запуск инициализации интерфейса после загрузки DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            setRandomQuote();
+
+            // Опции для плавной физики анимации (Cubic-Bezier)
+            const timingTiming = {
+                duration: 600,
+                fill: 'forwards',
+                easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+            };
+
+            // 1. Анимация шапки (Появление + легкое движение сверху вниз)
+            document.getElementById('main-header').animate([
+                { opacity: 0, transform: 'translateY(-20px) scale(0.98)' },
+                { opacity: 1, transform: 'translateY(0) scale(1)' }
+            ], timingTiming);
+
+            // 2. Каскадная анимация (Stagger) для всех карточек и 3D кнопок
+            const cascadeCards = document.querySelectorAll('.animate-cascade');
+            cascadeCards.forEach((card, index) => {
+                // Вычисляем задержку: первые элементы появляются быстрее, создавая волну
+                const delay = 150 + index * 45; 
+                
+                // Проверяем, является ли элемент обычной карточкой или изометрической
+                const isIso = card.classList.contains('iso-card');
+                
+                const startTransform = isIso 
+                    ? 'rotate(-8deg) skew(8deg) translateY(30px) scale(0.9)' 
+                    : 'translateY(25px) scale(0.96)';
+                    
+                const endTransform = isIso 
+                    ? 'rotate(-8deg) skew(8deg) translate(0,0) scale(1)' 
+                    : 'translateY(0) scale(1)';
+
+                card.animate([
+                    { opacity: 0, transform: startTransform },
+                    { opacity: 1, transform: endTransform }
+                ], {
+                    ...timingTiming,
+                    delay: delay,
+                    duration: 700
+                });
+            });
+
+            // 3. Анимация цитаты в самом конце
+            document.getElementById('quote-block').animate([
+                { opacity: 0, transform: 'translateY(15px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+            ], {
+                ...timingTiming,
+                delay: 150 + cascadeCards.length * 45 + 100
+            });
+        });
     </script>
 </body>
 </html>
